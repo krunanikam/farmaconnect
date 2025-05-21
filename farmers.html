@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmaConnect - Farmer Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --primary-light: #81C784;
+            --primary-dark: #388E3C;
+            --secondary-color: #2E7D32;
+            --accent-color: #8BC34A;
+            --danger-color: #F44336;
+            --danger-dark: #D32F2F;
+            --light-color: #F5F5F5;
+            --light-gray: #EEEEEE;
+            --medium-gray: #BDBDBD;
+            --dark-color: #333;
+            --text-color: #424242;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --border-radius: 12px;
+            --card-border-radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-brand h2 {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .navbar-brand i {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        .navbar-nav {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        .btn-connect {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.75rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .btn-connect:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Main Content Styles */
+        .commodity-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .commodity-card {
+            background-color: white;
+            border-radius: var(--card-border-radius);
+            padding: 1.75rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+        }
+
+        .commodity-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .commodity-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .commodity-card p {
+            margin: 0.6rem 0;
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        .commodity-card .price {
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 1.15rem;
+            margin: 1rem 0;
+        }
+
+        .remove-btn {
+            background-color: var(--danger-color);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 500;
+            margin-top: 1.25rem;
+            transition: var(--transition);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .remove-btn:hover {
+            background-color: var(--danger-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(244, 67, 54, 0.2);
+        }
+
+        /* Form Overlay Styles */
+        .form-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .form-modal {
+            background-color: white;
+            border-radius: var(--card-border-radius);
+            padding: 0;
+            width: 100%;
+            max-width: 480px;
+            max-height: 90vh;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            animation: modalFadeIn 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-modal h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.75rem;
+            text-align: center;
+            font-weight: 600;
+            padding: 1.5rem 1.5rem 0;
+        }
+
+        .form-content {
+            padding: 0 1.5rem;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.9rem;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--light-color);
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+            background-color: white;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: white;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .btn {
+            padding: 0.85rem 1.75rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-secondary {
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            border: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--medium-gray);
+            color: white;
+        }
+
+        /* Message Styles */
+        .message {
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin: 0 1.5rem 1.5rem;
+            text-align: center;
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .error-message {
+            background-color: #FFEBEE;
+            color: var(--danger-color);
+            border-left: 4px solid var(--danger-color);
+        }
+
+        .success-message {
+            background-color: #E8F5E9;
+            color: var(--secondary-color);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        /* Loading and Empty States */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--medium-gray);
+            font-size: 1.1rem;
+        }
+
+        .loading i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .no-commodities {
+            text-align: center;
+            padding: 3rem;
+            color: var(--medium-gray);
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        .no-commodities i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--medium-gray);
+        }
+
+        /* OTP Timer */
+        .otp-timer {
+            text-align: right;
+            font-size: 0.85rem;
+            color: var(--medium-gray);
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* Search Section Styles */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem auto;
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 0.9rem;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--light-color);
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+            background-color: white;
+        }
+
+        .search-box button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 2rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .search-box button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 1.5rem;
+            color: var(--primary-color);
+            font-size: 2rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .commodity-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1.25rem;
+                gap: 1rem;
+            }
+            
+            .navbar-nav {
+                margin-top: 0.5rem;
+                gap: 0.75rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .commodity-container {
+                grid-template-columns: 1fr;
+                padding: 1.25rem;
+            }
+            
+            .form-modal {
+                margin: 1.25rem;
+                max-width: calc(100% - 2.5rem);
+            }
+
+            .form-content {
+                padding: 0 1rem;
+            }
+
+            .form-modal h2 {
+                padding: 1rem 1rem 0;
+            }
+
+            .form-actions {
+                padding: 1rem;
+            }
+
+            .search-box {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .search-box button {
+                padding: 0.9rem;
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+                margin: 2rem 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-actions {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+        /* Image Preview Styles */
+#imagePreview {
+    transition: var(--transition);
+}
+
+#previewImage {
+    border: 1px solid var(--light-gray);
+    box-shadow: var(--shadow);
+}
+
+/* File Input Styles */
+input[type="file"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    background-color: var(--light-color);
+    font-size: 0.9rem;
+}
+
+input[type="file"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <i class="fas fa-leaf"></i>
+            <h2>FarmaConnect</h2>
+        </div>
+        <ul class="navbar-nav">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="farmers.html" class="nav-link active">Farmers</a></li>
+            <li><a href="venders.html" class="nav-link">Venders</a></li>
+            <li><a href="market_trend.html" class="nav-link">Market Prices</a></li>
+            <li><a href="prices.html" class="nav-link">Live Prices</a></li>
+        </ul>
+        <button class="btn-connect" onclick="openEmailForm()">
+            <i class="fas fa-plus"></i>
+            <span>Add Commodity</span>
+        </button>
+    </nav>
+
+    <!-- Email Verification Form -->
+    <div class="form-overlay" id="emailOverlay">
+        <div class="form-modal">
+            <h2>Email Verification</h2>
+            <div id="emailStatusMessage" class="message" style="display: none;"></div>
+            
+            <div class="form-content">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button class="btn btn-secondary" onclick="closeForm('emailOverlay')">
+                    <i class="fas fa-times"></i>
+                    <span>Cancel</span>
+                </button>
+                <button class="btn btn-primary" onclick="sendVerificationCode()">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Send OTP</span>
+                </button>
+            </div>
+            
+            <div id="verifySection" style="display: none;">
+                <div class="form-content">
+                    <div class="form-group">
+                        <label for="verificationCode">Enter OTP</label>
+                        <input type="text" id="verificationCode" placeholder="Enter 6-digit OTP">
+                        <div class="otp-timer" id="otpTimer">05:00</div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-secondary" onclick="resendOtp()">
+                        <i class="fas fa-redo"></i>
+                        <span>Resend OTP</span>
+                    </button>
+                    <button class="btn btn-primary" onclick="verifyCode()">
+                        <i class="fas fa-check"></i>
+                        <span>Verify</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Commodity Form -->
+    <div class="form-overlay" id="commodityOverlay">
+        <div class="form-modal">
+            <h2>Add New Commodity</h2>
+            <div id="commodityStatusMessage" class="message" style="display: none;"></div>
+            
+            <div class="form-content">
+                <form id="commodityForm">
+                    <div class="form-group">
+                        <label for="farmerName">Farmer Name</label>
+                        <input type="text" id="farmerName" placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Farm Address</label>
+                        <input type="text" id="address" placeholder="Enter your farm address">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Mobile Number</label>
+                        <input type="tel" id="phone" placeholder="Enter 10-digit mobile number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="commodity">Commodity Name</label>
+                        <input type="text" id="commodity" placeholder="e.g., Wheat, Rice, etc.">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantity">Quantity (kg)</label>
+                        <input type="number" id="quantity" placeholder="Enter quantity in kilograms">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Expected Price (₹)</label>
+                        <input type="number" id="price" placeholder="Enter expected price per kg">
+                    </div>
+                    <div class="form-group">
+                        <label for="commodityPhoto">Commodity Photo</label>
+                        <input type="file" id="commodityPhoto" accept="image/*" capture="environment">
+                        <div id="imagePreview" style="margin-top: 10px; display: none;">
+                            <img id="previewImage" src="#" alt="Preview" style="max-width: 100%; max-height: 200px; border-radius: 8px;">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" onclick="closeForm('commodityOverlay')">
+                    <i class="fas fa-times"></i>
+                    <span>Cancel</span>
+                </button>
+                <button type="button" class="btn btn-primary" onclick="submitCommodity()">
+                    <i class="fas fa-check"></i>
+                    <span>Submit</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Section -->
+    <div class="search-container">
+        <div class="search-box">
+            <input type="text" id="commoditySearch" placeholder="Search by commodity name...">
+            <input type="text" id="locationSearch" placeholder="Search by location...">
+            <button onclick="searchCommodities()">
+                <i class="fas fa-search"></i>
+                <span>Search</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- OTP Verification for Deletion -->
+    <div class="form-overlay" id="deleteOtpOverlay">
+        <div class="form-modal">
+            <h2>Confirm Deletion</h2>
+            <div class="form-content">
+                <p style="margin-bottom: 1.5rem; color: var(--text-color);">We've sent an OTP to your registered email. Please enter it below to confirm deletion.</p>
+                
+                <div id="deleteStatusMessage" class="message" style="display: none;"></div>
+                
+                <div class="form-group">
+                    <label for="deleteOtp">Enter OTP</label>
+                    <input type="text" id="deleteOtp" placeholder="Enter 6-digit OTP">
+                    <div class="otp-timer" id="deleteOtpTimer">05:00</div>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button class="btn btn-secondary" onclick="closeForm('deleteOtpOverlay')">
+                    <i class="fas fa-times"></i>
+                    <span>Cancel</span>
+                </button>
+                <button class="btn btn-primary" onclick="verifyDeleteOtp()">
+                    <i class="fas fa-trash-alt"></i>
+                    <span>Confirm Deletion</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <h1 class="section-title">Available Commodities</h1>
+    
+    <div id="loadingMessage" class="loading">
+        <i class="fas fa-spinner"></i>
+        <p>Loading commodities...</p>
+    </div>
+    <div id="noCommodities" class="no-commodities" style="display: none;">
+        <i class="fas fa-box-open"></i>
+        <p>No commodities available yet.</p>
+    </div>
+    
+    <div id="commodityList" class="commodity-container"></div>
+
+    <script>
+        // Global variables
+        let currentUserEmail = '';
+        let pendingDeletionId = null;
+        let pendingDeletionEmail = null;
+        let otpInterval;
+        let deleteOtpInterval;
+    
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchCommodities();
+            
+            // Image preview functionality
+            const commodityPhoto = document.getElementById('commodityPhoto');
+            const imagePreview = document.getElementById('imagePreview');
+            const previewImage = document.getElementById('previewImage');
+            
+            commodityPhoto.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        previewImage.src = e.target.result;
+                        imagePreview.style.display = 'block';
+                    }
+                    
+                    reader.readAsDataURL(file);
+                } else {
+                    imagePreview.style.display = 'none';
+                }
+            });
+        });
+    
+        // Fetch commodities from server
+        function fetchCommodities() {
+            document.getElementById('loadingMessage').style.display = 'block';
+            document.getElementById('commodityList').innerHTML = '';
+            document.getElementById('noCommodities').style.display = 'none';
+    
+            fetch("http://127.0.0.1:5000/get-farmers")
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('loadingMessage').style.display = 'none';
+                    
+                    if (data && data.length > 0) {
+                        displayCommodities(data);
+                    } else {
+                        document.getElementById('noCommodities').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    document.getElementById('loadingMessage').style.display = 'none';
+                    document.getElementById('noCommodities').style.display = 'block';
+                    document.getElementById('noCommodities').textContent = 'Error loading commodities. Please try again.';
+                });
+        }
+    
+        // Display commodities in the UI
+        function displayCommodities(commodities) {
+            const container = document.getElementById("commodityList");
+            container.innerHTML = '';
+            
+            commodities.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "commodity-card";
+                
+                // Add image if available
+                const imageHtml = item.image_url 
+                    ? `<img src="${item.image_url}" alt="${item.commodity}" style="max-width: 100%; border-radius: 8px; margin-bottom: 1rem;">`
+                    : '';
+                
+                card.innerHTML = `
+                    ${imageHtml}
+                    <h3>${item.commodity}</h3>
+                    <p><strong>Farmer:</strong> ${item.name}</p>
+                    <p><strong>Location:</strong> ${item.address}</p>
+                    <p><strong>Contact:</strong> ${item.mobile}</p>
+                    <p><strong>Quantity:</strong> ${item.quantity} kg</p>
+                    <p class="price"><strong>Price:</strong> ₹${item.price.toFixed(2)}/kg</p>
+                    <button class="remove-btn" onclick="initiateDeletion(${item.id}, '${item.email}')">
+                        <i class="fas fa-trash-alt"></i>
+                        Remove Commodity
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+        }
+    
+        // Form handling functions
+        function openEmailForm() {
+            document.getElementById("emailOverlay").style.display = "flex";
+            document.getElementById("email").value = '';
+            document.getElementById("verifySection").style.display = "none";
+            document.getElementById("emailStatusMessage").style.display = "none";
+            clearInterval(otpInterval);
+        }
+    
+        function closeForm(id) {
+            document.getElementById(id).style.display = "none";
+            if (id === 'deleteOtpOverlay') {
+                pendingDeletionId = null;
+                pendingDeletionEmail = null;
+                clearInterval(deleteOtpInterval);
+            }
+        }
+    
+        // OTP handling functions
+        function sendVerificationCode() {
+            const email = document.getElementById("email").value.trim();
+            const statusElement = document.getElementById("emailStatusMessage");
+            
+            if (!email || !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+                showMessage(statusElement, "Please enter a valid email address", "error");
+                return;
+            }
+    
+            fetch("http://127.0.0.1:5000/send-otp", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    currentUserEmail = email;
+                    document.getElementById("verifySection").style.display = "block";
+                    showMessage(statusElement, "OTP sent to your email!", "success");
+                    startOtpTimer('otpTimer', 300); // 5 minutes timer
+                } else {
+                    showMessage(statusElement, data.message || "Failed to send OTP", "error");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                showMessage(statusElement, "Failed to send OTP. Please try again.", "error");
+            });
+        }
+    
+        function verifyCode() {
+            const email = document.getElementById("email").value.trim();
+            const code = document.getElementById("verificationCode").value.trim();
+            const statusElement = document.getElementById("emailStatusMessage");
+            
+            if (!code || code.length !== 6) {
+                showMessage(statusElement, "Please enter a valid 6-digit OTP", "error");
+                return;
+            }
+    
+            fetch("http://127.0.0.1:5000/verify-otp", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: email, otp: code })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showMessage(statusElement, "Email verified successfully!", "success");
+                    clearInterval(otpInterval);
+                    setTimeout(() => {
+                        closeForm("emailOverlay");
+                        document.getElementById("commodityOverlay").style.display = "flex";
+                    }, 1000);
+                } else {
+                    showMessage(statusElement, data.message || "Invalid OTP!", "error");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                showMessage(statusElement, "Error verifying OTP. Please try again.", "error");
+            });
+        }
+    
+        function resendOtp() {
+            const email = document.getElementById("email").value.trim();
+            if (email) {
+                sendVerificationCode();
+            }
+        }
+    
+        // Commodity submission
+        function submitCommodity() {
+            const formData = new FormData();
+            const photoFile = document.getElementById('commodityPhoto').files[0];
+            
+            // Add all form data
+            formData.append('farmerName', document.getElementById('farmerName').value.trim());
+            formData.append('address', document.getElementById('address').value.trim());
+            formData.append('phone', document.getElementById('phone').value.trim());
+            formData.append('commodity', document.getElementById('commodity').value.trim());
+            formData.append('quantity', document.getElementById('quantity').value.trim());
+            formData.append('price', document.getElementById('price').value.trim());
+            formData.append('email', currentUserEmail);
+            
+            // Add photo if selected
+            if (photoFile) {
+                formData.append('photo', photoFile);
+            }
+    
+            // Validation
+            const phone = formData.get('phone');
+            if (!formData.get('farmerName') || !formData.get('address') || !phone || 
+                !formData.get('commodity') || !formData.get('quantity') || !formData.get('price')) {
+                showMessage(document.getElementById('commodityStatusMessage'), 
+                    'Please fill in all fields', 'error');
+                return;
+            }
+    
+            if (!/^\d{10}$/.test(phone)) {
+                showMessage(document.getElementById('commodityStatusMessage'), 
+                    'Please enter a valid 10-digit phone number', 'error');
+                return;
+            }
+    
+            fetch('http://127.0.0.1:5000/store-commodity', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => { throw err; });
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    showMessage(document.getElementById('commodityStatusMessage'), 
+                        'Commodity submitted successfully!', 'success');
+                    setTimeout(() => {
+                        closeForm('commodityOverlay');
+                        document.getElementById('commodityForm').reset();
+                        document.getElementById('imagePreview').style.display = 'none';
+                        fetchCommodities();
+                    }, 1500);
+                } else {
+                    showMessage(document.getElementById('commodityStatusMessage'), 
+                        data.message || 'Failed to submit commodity', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showMessage(document.getElementById('commodityStatusMessage'), 
+                    error.message || 'Failed to submit commodity. Please try again.', 'error');
+            });
+        }
+    
+        // Deletion functions
+        function initiateDeletion(id, email) {
+            pendingDeletionId = id;
+            pendingDeletionEmail = email;
+            
+            document.getElementById('deleteOtpOverlay').style.display = 'flex';
+            document.getElementById('deleteOtp').value = '';
+            document.getElementById('deleteStatusMessage').style.display = 'none';
+            
+            fetch("http://127.0.0.1:5000/request-delete-otp", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ 
+                    email: email, 
+                    id: id, 
+                    type: 'farmer'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    startOtpTimer('deleteOtpTimer', 300); // 5 minutes timer
+                } else {
+                    showMessage(document.getElementById('deleteStatusMessage'), 
+                        data.message || "Failed to send OTP", "error");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                showMessage(document.getElementById('deleteStatusMessage'), 
+                    "Failed to request OTP. Please try again.", "error");
+            });
+        }
+    
+        function verifyDeleteOtp() {
+            const otp = document.getElementById('deleteOtp').value.trim();
+            const statusElement = document.getElementById('deleteStatusMessage');
+            
+            if (!otp || otp.length !== 6) {
+                showMessage(statusElement, "Please enter a valid 6-digit OTP", "error");
+                return;
+            }
+    
+            if (!pendingDeletionId || !pendingDeletionEmail) {
+                showMessage(statusElement, "Deletion session expired. Please try again.", "error");
+                return;
+            }
+    
+            fetch("http://127.0.0.1:5000/verify-and-delete", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ 
+                    email: pendingDeletionEmail, 
+                    id: pendingDeletionId, 
+                    type: 'farmer',
+                    otp: otp 
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showMessage(statusElement, "Commodity deleted successfully!", "success");
+                    clearInterval(deleteOtpInterval);
+                    
+                    setTimeout(() => {
+                        closeForm('deleteOtpOverlay');
+                        fetchCommodities();
+                        pendingDeletionId = null;
+                        pendingDeletionEmail = null;
+                    }, 1500);
+                } else {
+                    showMessage(statusElement, data.message || "Failed to delete commodity", "error");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                showMessage(statusElement, "Error during deletion. Please try again.", "error");
+            });
+        }
+    
+        // Helper functions
+        function showMessage(element, message, type) {
+            element.textContent = message;
+            element.className = `message ${type}-message`;
+            element.style.display = 'block';
+        }
+    
+        function startOtpTimer(elementId, duration) {
+            clearInterval(otpInterval);
+            clearInterval(deleteOtpInterval);
+            
+            let timer = duration;
+            const interval = setInterval(() => {
+                const minutes = Math.floor(timer / 60);
+                const seconds = timer % 60;
+                
+                document.getElementById(elementId).textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    document.getElementById(elementId).textContent = "OTP expired";
+                }
+            }, 1000);
+            
+            if (elementId === 'otpTimer') {
+                otpInterval = interval;
+            } else {
+                deleteOtpInterval = interval;
+            }
+        }
+    
+        function searchCommodities() {
+            const commodityQuery = document.getElementById('commoditySearch').value;
+            const locationQuery = document.getElementById('locationSearch').value;
+            
+            document.getElementById('loadingMessage').style.display = 'block';
+            document.getElementById('noCommodities').style.display = 'none';
+            
+            // Build URL with query parameters
+            let url = "http://127.0.0.1:5000/get-farmers?";
+            if (commodityQuery) url += `commodity=${encodeURIComponent(commodityQuery)}&`;
+            if (locationQuery) url += `location=${encodeURIComponent(locationQuery)}`;
+            
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('loadingMessage').style.display = 'none';
+                    
+                    if (data && data.length > 0) {
+                        displayCommodities(data);
+                    } else {
+                        document.getElementById('noCommodities').style.display = 'block';
+                        document.getElementById('noCommodities').textContent = 'No matching commodities found.';
+                        document.getElementById('commodityList').innerHTML = '';
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    document.getElementById('loadingMessage').style.display = 'none';
+                    document.getElementById('noCommodities').style.display = 'block';
+                    document.getElementById('noCommodities').textContent = 'Error loading commodities. Please try again.';
+                });
+        }
+    </script>
+</body>
+</html>

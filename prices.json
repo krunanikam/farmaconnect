@@ -1,0 +1,383 @@
+{
+  "last_updated": "2025-05-13 09:41:34",
+  "prices": [
+    {
+      "vegetable": "Onion Big",
+      "wholesale": "₹25",
+      "retail": "29 - 32",
+      "shopping_mall": "30 - 41",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Onion Small",
+      "wholesale": "₹53",
+      "retail": "61 - 67",
+      "shopping_mall": "64 - 87",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Tomato",
+      "wholesale": "₹16",
+      "retail": "18 - 20",
+      "shopping_mall": "19 - 26",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Green Chilli",
+      "wholesale": "₹48",
+      "retail": "55 - 61",
+      "shopping_mall": "58 - 79",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Beetroot",
+      "wholesale": "₹30",
+      "retail": "35 - 38",
+      "shopping_mall": "36 - 50",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Potato",
+      "wholesale": "₹29",
+      "retail": "33 - 37",
+      "shopping_mall": "35 - 48",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Raw Banana (Plantain)",
+      "wholesale": "₹8",
+      "retail": "9 - 10",
+      "shopping_mall": "10 - 13",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Amaranth Leaves",
+      "wholesale": "₹11",
+      "retail": "13 - 14",
+      "shopping_mall": "13 - 18",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Amla",
+      "wholesale": "₹85",
+      "retail": "98 - 108",
+      "shopping_mall": "102 - 140",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Ash gourd",
+      "wholesale": "₹19",
+      "retail": "22 - 24",
+      "shopping_mall": "23 - 31",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Baby Corn",
+      "wholesale": "₹55",
+      "retail": "63 - 70",
+      "shopping_mall": "66 - 91",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Banana Flower",
+      "wholesale": "₹18",
+      "retail": "21 - 23",
+      "shopping_mall": "22 - 30",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Capsicum",
+      "wholesale": "₹45",
+      "retail": "52 - 57",
+      "shopping_mall": "54 - 74",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Bitter Gourd",
+      "wholesale": "₹34",
+      "retail": "39 - 43",
+      "shopping_mall": "41 - 56",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Bottle Gourd",
+      "wholesale": "₹25",
+      "retail": "29 - 32",
+      "shopping_mall": "30 - 41",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Butter Beans",
+      "wholesale": "₹46",
+      "retail": "53 - 58",
+      "shopping_mall": "55 - 76",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Broad Beans",
+      "wholesale": "₹34",
+      "retail": "39 - 43",
+      "shopping_mall": "41 - 56",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Cabbage",
+      "wholesale": "₹17",
+      "retail": "20 - 22",
+      "shopping_mall": "20 - 28",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Carrot",
+      "wholesale": "₹37",
+      "retail": "43 - 47",
+      "shopping_mall": "44 - 61",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Cauliflower",
+      "wholesale": "₹26",
+      "retail": "30 - 33",
+      "shopping_mall": "31 - 43",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Cluster beans",
+      "wholesale": "₹41",
+      "retail": "47 - 52",
+      "shopping_mall": "49 - 68",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Coconut",
+      "wholesale": "₹69",
+      "retail": "79 - 88",
+      "shopping_mall": "83 - 114",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Colocasia Leaves",
+      "wholesale": "₹13",
+      "retail": "15 - 17",
+      "shopping_mall": "16 - 21",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Colocasia",
+      "wholesale": "₹29",
+      "retail": "33 - 37",
+      "shopping_mall": "35 - 48",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Coriander Leaves",
+      "wholesale": "₹15",
+      "retail": "17 - 19",
+      "shopping_mall": "18 - 25",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Corn",
+      "wholesale": "₹33",
+      "retail": "38 - 42",
+      "shopping_mall": "40 - 54",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Cucumber",
+      "wholesale": "₹23",
+      "retail": "26 - 29",
+      "shopping_mall": "28 - 38",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Curry Leaves",
+      "wholesale": "₹27",
+      "retail": "31 - 34",
+      "shopping_mall": "32 - 45",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Dill Leaves",
+      "wholesale": "₹12",
+      "retail": "14 - 15",
+      "shopping_mall": "14 - 20",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Drumsticks",
+      "wholesale": "₹50",
+      "retail": "58 - 64",
+      "shopping_mall": "60 - 83",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Brinjal",
+      "wholesale": "₹36",
+      "retail": "41 - 46",
+      "shopping_mall": "43 - 59",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Brinjal (Big)",
+      "wholesale": "₹30",
+      "retail": "35 - 38",
+      "shopping_mall": "36 - 50",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Elephant Yam",
+      "wholesale": "₹42",
+      "retail": "48 - 53",
+      "shopping_mall": "50 - 69",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Fenugreek Leaves",
+      "wholesale": "₹12",
+      "retail": "14 - 15",
+      "shopping_mall": "14 - 20",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "French Beans",
+      "wholesale": "₹50",
+      "retail": "58 - 64",
+      "shopping_mall": "60 - 83",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Garlic",
+      "wholesale": "₹99",
+      "retail": "114 - 126",
+      "shopping_mall": "119 - 163",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Ginger",
+      "wholesale": "₹58",
+      "retail": "67 - 74",
+      "shopping_mall": "70 - 96",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Onion Green",
+      "wholesale": "₹38",
+      "retail": "44 - 48",
+      "shopping_mall": "46 - 63",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Green Peas",
+      "wholesale": "₹49",
+      "retail": "56 - 62",
+      "shopping_mall": "59 - 81",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Ivy Gourd",
+      "wholesale": "₹34",
+      "retail": "39 - 43",
+      "shopping_mall": "41 - 56",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Lemon (Lime)",
+      "wholesale": "₹50",
+      "retail": "58 - 64",
+      "shopping_mall": "60 - 83",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Mango Raw",
+      "wholesale": "₹40",
+      "retail": "46 - 51",
+      "shopping_mall": "48 - 66",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Mint Leaves",
+      "wholesale": "₹4",
+      "retail": "5 - 5",
+      "shopping_mall": "5 - 7",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Mushroom",
+      "wholesale": "₹88",
+      "retail": "101 - 112",
+      "shopping_mall": "106 - 145",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Mustard Leaves",
+      "wholesale": "₹13",
+      "retail": "15 - 17",
+      "shopping_mall": "16 - 21",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Ladies Finger",
+      "wholesale": "₹35",
+      "retail": "40 - 44",
+      "shopping_mall": "42 - 58",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Pumpkin",
+      "wholesale": "₹23",
+      "retail": "26 - 29",
+      "shopping_mall": "28 - 38",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Radish",
+      "wholesale": "₹27",
+      "retail": "31 - 34",
+      "shopping_mall": "32 - 45",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Ridge Gourd",
+      "wholesale": "₹34",
+      "retail": "39 - 43",
+      "shopping_mall": "41 - 56",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Shallot (Pearl Onion)",
+      "wholesale": "₹33",
+      "retail": "38 - 42",
+      "shopping_mall": "40 - 54",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Snake Gourd",
+      "wholesale": "₹32",
+      "retail": "37 - 41",
+      "shopping_mall": "38 - 53",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Sorrel Leaves",
+      "wholesale": "₹17",
+      "retail": "20 - 22",
+      "shopping_mall": "20 - 28",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Spinach",
+      "wholesale": "₹17",
+      "retail": "20 - 22",
+      "shopping_mall": "20 - 28",
+      "units": "1kg"
+    },
+    {
+      "vegetable": "Sweet Potato",
+      "wholesale": "₹60",
+      "retail": "69 - 76",
+      "shopping_mall": "72 - 99",
+      "units": "1kg"
+    }
+  ]
+}

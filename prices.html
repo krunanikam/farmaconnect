@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maharashtra Vegetable Prices</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --primary-light: #81C784;
+            --primary-dark: #388E3C;
+            --secondary-color: #2E7D32;
+            --accent-color: #8BC34A;
+            --danger-color: #F44336;
+            --danger-dark: #D32F2F;
+            --light-color: #F5F5F5;
+            --light-gray: #EEEEEE;
+            --medium-gray: #BDBDBD;
+            --dark-color: #333;
+            --text-color: #424242;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --border-radius: 12px;
+            --card-border-radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-brand h2 {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .navbar-brand i {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        .navbar-nav {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        /* Main Content Styles */
+        .content-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            background: white;
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        .refresh-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .refresh-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .last-updated {
+            text-align: right;
+            font-style: italic;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        .status {
+            text-align: center;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: var(--border-radius);
+        }
+
+        .loading {
+            background-color: #e3f2fd;
+            color: #0d47a1;
+        }
+
+        .error {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+            
+            .navbar-nav {
+                margin-top: 0.5rem;
+                gap: 0.75rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .content-container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <i class="fas fa-leaf"></i>
+            <h2>FarmaConnect</h2>
+        </div>
+        <ul class="navbar-nav">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="farmers.html" class="nav-link">Farmers</a></li>
+            <li><a href="venders.html" class="nav-link">Vendors</a></li>
+            <li><a href="market_trend.html" class="nav-link">Market Prices</a></li>
+            <li><a href="#" class="nav-link active">Live Prices</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-container">
+        <h1>Maharashtra Vegetable Prices</h1>
+
+        <div id="status" class="status loading">Loading price data...</div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vegetable</th>
+                        <th>Wholesale (₹)</th>
+                        <th>Retail (₹)</th>
+                        <th>Shopping Mall (₹)</th>
+                        <th>Units</th>
+                    </tr>
+                </thead>
+                <tbody id="prices-body"></tbody>
+            </table>
+        </div>
+
+        <button class="refresh-btn" onclick="loadData()">
+            <i class="fas fa-sync-alt"></i> Refresh Prices
+        </button>
+        <div class="last-updated" id="last-updated"></div>
+    </div>
+
+    <script>
+        function loadData() {
+            const statusEl = document.getElementById('status');
+            const tableBody = document.getElementById('prices-body');
+
+            statusEl.className = 'status loading';
+            statusEl.textContent = 'Loading data...';
+            tableBody.innerHTML = '';
+
+            fetch('prices.json?t=' + new Date().getTime())
+                .then(res => {
+                    if (!res.ok) throw new Error('Failed to load prices.json');
+                    return res.json();
+                })
+                .then(data => {
+                    if (data.error) throw new Error(data.error);
+                    if (!data.prices || data.prices.length === 0)
+                        throw new Error('No data found.');
+
+                    data.prices.forEach(item => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${item.vegetable || 'N/A'}</td>
+                            <td>${item.wholesale || 'N/A'}</td>
+                            <td>${item.retail || 'N/A'}</td>
+                            <td>${item.shopping_mall || 'N/A'}</td>
+                            <td>${item.units || 'N/A'}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+
+                    statusEl.className = 'status';
+                    statusEl.textContent = '';
+                    document.getElementById('last-updated').textContent =
+                        'Last updated: ' + (data.last_updated || new Date().toLocaleString());
+                })
+                .catch(err => {
+                    statusEl.className = 'status error';
+                    statusEl.textContent = 'Error: ' + err.message;
+                    document.getElementById('last-updated').textContent = '';
+                    console.error('Error:', err);
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadData);
+        setInterval(loadData, 120000); // Refresh every 2 minutes
+    </script>
+</body>
+</html>

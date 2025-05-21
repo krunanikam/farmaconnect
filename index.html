@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>FarmaConnect</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Poppins:wght@200;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    
+    <style>
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+            margin-left: 15px;
+        }
+        .language-btn {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 120px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0;
+            top: 100%;
+            margin-top: 5px;
+        }
+        .language-dropdown a {
+            color: black;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .language-dropdown a:hover {
+            background-color: #f1f1f1;
+        }
+        .language-switcher:hover .language-dropdown {
+            display: block;
+        }
+        .language-flag {
+            width: 20px;
+            height: 15px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        .process-step {
+            border-left: 3px solid #0d6efd;
+            padding-left: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .process-step:last-child {
+            border-left: 0;
+        }
+        .process-step::before {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #0d6efd;
+            left: -9px;
+            top: 0;
+        }
+        .process-step h4 {
+            color: #0d6efd;
+        }
+        #how-it-works {
+            scroll-margin-top: 100px;
+        }
+        #contact-section {
+            scroll-margin-top: 80px;
+        }
+        #platform-features {
+            scroll-margin-top: 80px;
+        }
+        #price-prediction {
+            scroll-margin-top: 80px;
+        }
+        .feature-card {
+            border-radius: 10px;
+            padding: 25px;
+            height: 100%;
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .price-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            padding: 20px;
+            height: 100%;
+        }
+        .commodity-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .commodity-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .prediction-badge {
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        .navbar-brand h2 {
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar Start -->
+    <div class="container-fluid sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+                <a href="index.html" class="navbar-brand">
+                    <h2 class="text-white" id="brand-name">FarmaConnect</h2>
+                </a>
+                <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto">
+                        <a href="index.html" class="nav-item nav-link active" data-i18n="home">Home</a>
+                        <a href="farmers.html" class="nav-item nav-link" data-i18n="farmer">I am a Farmer</a>
+                        <a href="venders.html" class="nav-item nav-link" data-i18n="vender">I am a Vender</a>
+                        <li><a href="market_trend.html" class="nav-link" data-i18n="marketPrices">Market Prices</a></li>
+                        <li><a href="prices.html" class="nav-link" data-i18n="livePrices">Live Prices</a></li>
+                        
+                        <div class="language-switcher">
+                            <button class="language-btn">
+                                <img src="https://flagcdn.com/w20/gb.png" class="language-flag" alt="English">
+                                <span>EN</span>
+                            </button>
+                            <div class="language-dropdown">
+                                <a href="#" onclick="changeLanguage('en')">
+                                    <img src="https://flagcdn.com/w20/gb.png" class="language-flag" alt="English">
+                                    English
+                                </a>
+                                <a href="#" onclick="changeLanguage('hi')">
+                                    <img src="https://flagcdn.com/w20/in.png" class="language-flag" alt="Hindi">
+                                    हिंदी
+                                </a>
+                                <a href="#" onclick="changeLanguage('mr')">
+                                    <img src="https://flagcdn.com/w20/in.png" class="language-flag" alt="Marathi">
+                                    मराठी
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#how-it-works" class="btn btn-dark py-2 px-4 d-none d-lg-inline-block" data-i18n="connectNow">Connect Now</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Hero Start -->
+    <div class="container-fluid bg-primary hero-header mb-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h3 class="fw-light text-white animated slideInRight" id="hero-brand">FarmaConnect</h3>
+                    <h1 class="display-4 text-white animated slideInRight" data-i18n="heroTitle">Farmers <span class="fw-light text-dark">Connect</span> Vendors Grow Together</h1>
+                    <p class="text-white mb-4 animated slideInRight" data-i18n="heroSubtitle">Grow. Sell. Thrive. Connect directly with vendors to maximize your revenue.</p>
+                    <a href="#how-it-works" class="btn btn-dark py-2 px-4 me-3 animated slideInRight" data-i18n="connectNow">Connect Now</a>
+                    <a href="#contact-section" class="btn btn-outline-dark py-2 px-4 animated slideInRight" data-i18n="contactUs">Contact Us</a>
+                </div>
+                <div class="col-lg-6">
+                    <img class="img-fluid animated pulse infinite" src="img/Farmers.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+
+    <!-- Feature Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="feature-item position-relative bg-primary text-center p-3">
+                        <div class="border py-5 px-3">
+                            <i class="fa fa-tractor fa-3x text-dark mb-4"></i>
+                            <h5 class="text-white mb-0" data-i18n="farmers">Farmers</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="feature-item position-relative bg-primary text-center p-3">
+                        <div class="border py-5 px-3">
+                            <i class="fa fa-link fa-3x text-dark mb-4"></i>
+                            <h5 class="text-white mb-0" data-i18n="connects">Connects</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="feature-item position-relative bg-primary text-center p-3">
+                        <div class="border py-5 px-3">
+                            <i class="fa fa-store fa-3x text-dark mb-4"></i>
+                            <h5 class="text-white mb-0" data-i18n="venders">Venders</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Feature End -->
+
+    <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <img class="img-fluid animated pulse infinite" src="img/handsh.png" alt="FarmaConnect Products">
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <h1 class="text-primary mb-4" data-i18n="aboutTitle">Empowering Farmers, <span class="fw-light text-dark">Connecting You to Freshness</span></h1>
+                    <p class="mb-4" data-i18n="aboutText1">At FarmaConnect, we bridge the gap between farmers and consumers, ensuring fresh, organic, and high-quality produce reaches every household. Our mission is to support sustainable farming and promote healthier living.</p>
+                    <p class="mb-4" data-i18n="aboutText2">By choosing FarmaConnect, you contribute to fair trade practices, better livelihoods for farmers, and access to pesticide-free, farm-fresh products directly from the source.</p>
+                    <a class="btn btn-primary py-2 px-4" href="#platform-features" data-i18n="exploreMore">Explore More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Platform Features Start -->
+    <div class="container-fluid py-5 bg-light" id="platform-features">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="text-primary mb-3" data-i18n="platformTitle">Our Platform Features</h1>
+                <p class="mb-5" data-i18n="platformSubtitle">Simple, secure and efficient platform connecting farmers and vendors</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="feature-card bg-white">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary p-3 rounded me-3">
+                                <i class="fa fa-user-check text-white fa-2x"></i>
+                            </div>
+                            <h4 class="mb-0" data-i18n="feature1Title">Email Verification</h4>
+                        </div>
+                        <p class="mb-0" data-i18n="feature1Desc">Simple email verification process for both farmers and vendors to ensure authenticity and security.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="feature-card bg-white">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary p-3 rounded me-3">
+                                <i class="fa fa-seedling text-white fa-2x"></i>
+                            </div>
+                            <h4 class="mb-0" data-i18n="feature2Title">Commodity Listing</h4>
+                        </div>
+                        <p class="mb-0" data-i18n="feature2Desc">Farmers can easily list their available crops with details like quantity, quality and harvest date.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="feature-card bg-white">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary p-3 rounded me-3">
+                                <i class="fa fa-search text-white fa-2x"></i>
+                            </div>
+                            <h4 class="mb-0" data-i18n="feature3Title">Smart search</h4>
+                        </div>
+                        <p class="mb-0" data-i18n="feature3Desc">Vendors and farmers can search by commodity and location.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="feature-card bg-white">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary p-3 rounded me-3">
+                                <i class="fa fa-money-bill-transfer text-white fa-2x"></i>
+                            </div>
+                            <h4 class="mb-0" data-i18n="feature4Title">You only can remove your records</h4>
+                        </div>
+                        <p class="mb-0" data-i18n="feature4Desc">Email verification is required to delete your commodity records.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="feature-card bg-white">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary p-3 rounded me-3">
+                                <i class="fa fa-robot text-white fa-2x"></i>
+                            </div>
+                            <h4 class="mb-0" data-i18n="feature5Title">Smart Matching</h4>
+                        </div>
+                        <p class="mb-0" data-i18n="feature5Desc">Our system automatically matches farmers' produce with vendors' requirements.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="feature-card bg-white">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary p-3 rounded me-3">
+                                <i class="fa fa-chart-line text-white fa-2x"></i>
+                            </div>
+                            <h4 class="mb-0" data-i18n="feature6Title">Market Insights</h4>
+                        </div>
+                        <p class="mb-0" data-i18n="feature6Desc">Get access to real-time market trends and pricing data for better decisions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Platform Features End -->
+
+    <!-- Price Prediction Start -->
+    <div class="container-fluid py-5" id="price-prediction">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="text-primary mb-3" data-i18n="pricePredictionTitle">Market Price Prediction</h1>
+                <p class="mb-5" data-i18n="pricePredictionSubtitle">Our ML-powered price predictions help you make informed decisions</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="price-card">
+                        <h3 class="mb-4" data-i18n="howItWorks">How It Works</h3>
+                        <p data-i18n="predictionDesc1">Our advanced machine learning algorithms analyze historical price data, weather patterns, demand trends, and other market factors to predict commodity prices.</p>
+                        <p data-i18n="predictionDesc2">These predictions help both farmers and vendors plan their sales and purchases more effectively, maximizing profits and minimizing risks.</p>
+                        <div class="mt-4">
+                            <h5 data-i18n="keyFactors">Key Factors We Consider:</h5>
+                            <ul class="commodity-list">
+                                <li data-i18n="factor1">Historical price trends</li>
+                                <li data-i18n="factor2">Seasonal demand patterns</li>
+                                <li data-i18n="factor3">Weather forecasts</li>
+                                <li data-i18n="factor4">Crop yield estimates</li>
+                                <li data-i18n="factor5">Market demand indicators</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="price-card">
+                        <h3 class="mb-4" data-i18n="currentPredictions">Current Predictions</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th data-i18n="commodity">Commodity</th>
+                                        <th data-i18n="currentPrice">Current Price</th>
+                                        <th data-i18n="predictedPrice">Predicted Price (7 days)</th>
+                                        <th data-i18n="trend">Trend</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-i18n="tomato">Tomato</td>
+                                        <td>₹45/kg</td>
+                                        <td>₹52/kg</td>
+                                        <td><span class="badge bg-success prediction-badge" data-i18n="rising">Rising</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td data-i18n="potato">Potato</td>
+                                        <td>₹25/kg</td>
+                                        <td>₹22/kg</td>
+                                        <td><span class="badge bg-danger prediction-badge" data-i18n="falling">Falling</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td data-i18n="onion">Onion</td>
+                                        <td>₹30/kg</td>
+                                        <td>₹32/kg</td>
+                                        <td><span class="badge bg-success prediction-badge" data-i18n="rising">Rising</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td data-i18n="wheat">Wheat</td>
+                                        <td>₹22/kg</td>
+                                        <td>₹24/kg</td>
+                                        <td><span class="badge bg-success prediction-badge" data-i18n="rising">Rising</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td data-i18n="rice">Rice</td>
+                                        <td>₹38/kg</td>
+                                        <td>₹37/kg</td>
+                                        <td><span class="badge bg-warning text-dark prediction-badge" data-i18n="stable">Stable</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="alert alert-info mt-3" data-i18n="predictionNote">
+                            Note: These predictions are generated by our ML models and should be used as guidance only. Actual market prices may vary.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Price Prediction End -->
+
+    <!-- How It Works Start -->
+    <div class="container-fluid py-5" id="how-it-works">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="text-primary mb-3" data-i18n="howItWorksTitle">How It Works</h1>
+                <p class="mb-5" data-i18n="howItWorksSubtitle">Simple steps to connect farmers and vendors for mutual growth</p>
+            </div>
+            <div class="row g-4">
+                <!-- Farmer Process -->
+<div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+    <div class="bg-light p-4 rounded">
+        <h3 class="text-center text-primary mb-4" data-i18n="forFarmersProcess">For Farmers</h3>
+        <div class="process-step">
+            <h4 data-i18n="step1Farmer">1. Email Verification</h4>
+            <p data-i18n="step1FarmerDesc">Complete email verification for secure authentication</p>
+        </div>
+        <div class="process-step">
+            <h4 data-i18n="step2Farmer">2. Commodity Listing</h4>
+            <p data-i18n="step2FarmerDesc">List your commodities with details: your name, location, contact, commodity type, quantity and price</p>
+        </div>
+        <div class="process-step">
+            <h4 data-i18n="step3Farmer">3. Remove Completed Listings</h4>
+            <p data-i18n="step3FarmerDesc">Easily remove your commodity listing when your produce is sold</p>
+        </div>
+        <div class="process-step">
+            <h4 data-i18n="step4Farmer">4. Find Vendors</h4>
+            <p data-i18n="step4FarmerDesc">Search for perfect vendors by market name and commodity type</p>
+        </div>
+        <div class="text-center mt-4">
+            <a href="farmers.html" class="btn btn-primary" data-i18n="registerFarmer">Register as Farmer</a>
+        </div>
+    </div>
+</div>
+
+<!-- Vendor Process -->
+<div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+    <div class="bg-light p-4 rounded">
+        <h3 class="text-center text-primary mb-4" data-i18n="forVendorsProcess">For Vendors</h3>
+        <div class="process-step">
+            <h4 data-i18n="step1Vendor">1. Email Verification</h4>
+            <p data-i18n="step1VendorDesc">Complete email verification for secure authentication</p>
+        </div>
+        <div class="process-step">
+            <h4 data-i18n="step2Vendor">2. Commodity Requirements</h4>
+            <p data-i18n="step2VendorDesc">List your requirements with details: your name, market name, contact, commodity type, quantity and price</p>
+        </div>
+        <div class="process-step">
+            <h4 data-i18n="step3Vendor">3. Remove Fulfilled Needs</h4>
+            <p data-i18n="step3VendorDesc">Easily remove your commodity requirement when your need is fulfilled</p>
+        </div>
+        <div class="process-step">
+            <h4 data-i18n="step4Vendor">4. Find Farmers</h4>
+            <p data-i18n="step4VendorDesc">Search for perfect farmers by market name and commodity type</p>
+        </div>
+        <div class="text-center mt-4">
+            <a href="venders.html" class="btn btn-primary" data-i18n="registerVendor">Register as Vendor</a>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+    <!-- How It Works End -->
+
+    <!-- CTA Section Start -->
+    <div class="container-fluid deal bg-primary my-5 py-5">
+        <div class="container py-5">
+            <h2 class="text-center text-white mb-4" data-i18n="sectionTitle">Join the Future of Agriculture</h2>
+            <p class="text-center text-white mb-5" data-i18n="sectionSubtitle">Connect directly with the best resources for farming and business growth.</p>
+            <div class="row g-5">
+                <!-- Farmer Section -->
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="bg-white text-center p-4">
+                        <div class="border p-4">
+                            <img src="img/f.png" alt="Farmer" class="mb-3" width="300">
+                            <h3 class="fw-bold text-uppercase mb-3" data-i18n="forFarmers">For Farmers</h3>
+                            <p data-i18n="farmerText">Row with Confidence. Sell with Ease. Earn More with FarmaConnect.</p>
+                            <a class="btn btn-dark py-2 px-4" href="farmers.html" data-i18n="registerFarmer">Register as Farmer</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Vendor Section -->
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="bg-white text-center p-4">
+                        <div class="border p-4">
+                            <img src="img/v.png" alt="Vendor" class="mb-3" width="300">
+                            <h3 class="fw-bold text-uppercase mb-3" data-i18n="forVendors">For Vendors</h3>
+                            <p data-i18n="vendorText">Discover fresh, local produce. Simplify your sourcing and boost your business.</p>
+                            <a class="btn btn-dark py-2 px-4" href="venders.html" data-i18n="registerVendor">Register as Vendor</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- CTA Section End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-white footer" id="contact-section">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                    <a href="index.html" class="d-inline-block mb-3">
+                        <h1 class="text-primary" id="footer-brand">FarmaConnect</h1>
+                    </a>
+                    <p class="mb-0" data-i18n="footerTagline">Sow the Seeds. Reap the Profits. Connect, Grow, and Thrive.</p>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+                    <h5 class="mb-4" data-i18n="getInTouch">Get In Touch</h5>
+                    <p><i class="fa fa-map-marker-alt me-3"></i><span data-i18n="address">123 Street, Kolhapur, India</span></p>
+                    <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                    <p><i class="fa fa-envelope me-3"></i>farmaaconnect@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-outline-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-outline-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-outline-primary me-1" href=""><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-square btn-outline-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
+                    <h5 class="mb-4" data-i18n="quickLinks">Quick Links</h5>
+                    <a class="btn btn-link" href="index.html" data-i18n="home">Home</a>
+                    <a class="btn btn-link" href="farmers.html" data-i18n="farmer">I am a Farmer</a>
+                    <a class="btn btn-link" href="venders.html" data-i18n="vender">I am a Vender</a>
+                    <a class="btn btn-link" href="#contact-section" data-i18n="contact">Contact</a>
+                    <a class="btn btn-link" href="#price-prediction" data-i18n="marketPrices">Market Prices</a>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+                    <h5 class="mb-4" data-i18n="newsletter">Newsletter</h5>
+                    <p data-i18n="newsletterText">Subscribe to get updates about farming techniques and market trends.</p>
+                    <div class="position-relative">
+                        <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email" data-i18n-placeholder="yourEmail">
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2" data-i18n="subscribe">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <script>
+        // Language translations
+        const translations = {
+            en: {
+                brandName: "FarmaConnect",
+                home: "Home",
+                farmer: "I am a Farmer",
+                vender: "I am a Vender",
+                marketPrices: "Market Prices",
+                livePrices:"Live Prices",
+                contact: "Contact",
+                connectNow: "Connect Now",
+                heroTitle: "Farmers <span class='fw-light text-dark'>Connect</span> Vendors Grow Together",
+                heroSubtitle: "Grow. Sell. Thrive. Connect directly with vendors to maximize your revenue.",
+                contactUs: "Contact Us",
+                farmers: "Farmers",
+                connects: "Connects",
+                venders: "Venders",
+                aboutTitle: "Empowering Farmers,",
+                aboutText1: "At FarmaConnect, we bridge the gap between farmers and consumers, ensuring fresh, organic, and high-quality produce reaches every household. Our mission is to support sustainable farming and promote healthier living.",
+                aboutText2: "By choosing FarmaConnect, you contribute to fair trade practices, better livelihoods for farmers, and access to pesticide-free, farm-fresh products directly from the source.",
+                exploreMore: "Explore More",
+                platformTitle: "Our Platform Features",
+                platformSubtitle: "Simple, secure and efficient platform connecting farmers and vendors",
+                feature1Title: "Email Verification",
+                feature1Desc: "Simple email verification process for both farmers and vendors to ensure authenticity and security.",
+                feature2Title: "Commodity Listing",
+                feature2Desc: "Farmers can easily list their available crops with details like quantity, quality and harvest date.",
+                feature3Title: "Requirement Posting",
+                feature3Desc: "Vendors can post their requirements specifying what commodities they're looking to purchase.",
+                feature4Title: "Smart search",
+                feature4Desc: "Vendors and farmers can search by commodity and location.",
+                feature5Title: "You only can remove your records",
+                feature5Desc: "Email verification is required to delete your commodity records.",
+                feature6Title: "Market Insights",
+                feature6Desc: "Get access to real-time market trends and pricing data for better decisions.",
+                pricePredictionTitle: "Market Price Prediction",
+                pricePredictionSubtitle: "Our ML-powered price predictions help you make informed decisions",
+                howItWorks: "How It Works",
+                predictionDesc1: "Our advanced machine learning algorithms analyze historical price data, weather patterns, demand trends, and other market factors to predict commodity prices.",
+                predictionDesc2: "These predictions help both farmers and vendors plan their sales and purchases more effectively, maximizing profits and minimizing risks.",
+                keyFactors: "Key Factors We Consider:",
+                factor1: "Historical price trends",
+                factor2: "Seasonal demand patterns",
+                factor3: "Weather forecasts",
+                factor4: "Crop yield estimates",
+                factor5: "Market demand indicators",
+                currentPredictions: "Current Predictions",
+                commodity: "Commodity",
+                currentPrice: "Current Price",
+                predictedPrice: "Predicted Price (7 days)",
+                trend: "Trend",
+                tomato: "Tomato",
+                potato: "Potato",
+                onion: "Onion",
+                wheat: "Wheat",
+                rice: "Rice",
+                rising: "Rising",
+                falling: "Falling",
+                stable: "Stable",
+                predictionNote: "Note: These predictions are generated by our ML models and should be used as guidance only. Actual market prices may vary.",
+                howItWorksTitle: "How It Works",
+                howItWorksSubtitle: "Simple steps to connect farmers and vendors for mutual growth",
+                forFarmersProcess: "For Farmers",
+        step1Farmer: "1. Email Verification",
+        step1FarmerDesc: "Complete email verification for secure authentication",
+        step2Farmer: "2. Commodity Listing",
+        step2FarmerDesc: "List your commodities with details: your name, location, contact, commodity type, quantity and price",
+        step3Farmer: "3. Remove Completed Listings",
+        step3FarmerDesc: "Easily remove your commodity listing when your produce is sold",
+        step4Farmer: "4. Find Vendors",
+        step4FarmerDesc: "Search for perfect vendors by market name and commodity type",
+        registerFarmer: "Register as Farmer",
+                sectionTitle: "Join the Future of Agriculture",
+                sectionSubtitle: "Connect directly with the best resources for farming and business growth.",
+                forFarmers: "For Farmers",
+                farmerText: "Row with Confidence. Sell with Ease. Earn More with FarmaConnect.",
+                registerFarmer: "Register as Farmer",
+                forVendors: "For Vendors",
+                vendorText: "Discover fresh, local produce. Simplify your sourcing and boost your business.",
+                registerVendor: "Register as Vendor",
+                footerTagline: "Sow the Seeds. Reap the Profits. Connect, Grow, and Thrive.",
+                getInTouch: "Get In Touch",
+                address: "123 Street, Kolhapur, India",
+                quickLinks: "Quick Links",
+                newsletter: "Newsletter",
+                newsletterText: "Subscribe to get updates about farming techniques and market trends.",
+                yourEmail: "Your email",
+                subscribe: "Subscribe",
+                marketPrices: "Market Prices"
+            },
+            hi: {
+                brandName: "फार्माकनेक्ट",
+                home: "होम",
+                farmer: "मैं एक किसान हूँ",
+                vender: "मैं एक विक्रेता हूँ",
+                marketPrices: "बाजार मूल्य",
+                livePrices: "लाइव मूल्य",
+
+                connectNow: "अभी कनेक्ट करें",
+                heroTitle: "किसान <span class='fw-light text-dark'>जुड़ें</span> विक्रेता साथ में बढ़ें",
+                heroSubtitle: "उगाएं। बेचें। फलें-फूलें। अपनी आय को अधिकतम करने के लिए सीधे विक्रेताओं से जुड़ें।",
+                contactUs: "हमसे संपर्क करें",
+                farmers: "किसान",
+                connects: "जोड़ता है",
+                venders: "विक्रेता",
+                aboutTitle: "किसानों को सशक्त बनाना,",
+                aboutText1: "फार्माकनेक्ट में, हम किसानों और उपभोक्ताओं के बीच की खाई को पाटते हैं, यह सुनिश्चित करते हुए कि ताजा, जैविक और उच्च गुणवत्ता वाले उत्पाद प्रत्येक घर तक पहुंचे। हमारा मिशन स्थायी खेती का समर्थन करना और स्वस्थ जीवन को बढ़ावा देना है।",
+                aboutText2: "फार्माकनेक्ट को चुनकर, आप निष्पक्ष व्यापार प्रथाओं, किसानों के बेहतर जीवन यापन और सीधे स्रोत से कीटनाशक मुक्त, फार्म-फ्रेश उत्पादों तक पहुंच में योगदान देते हैं।",
+                exploreMore: "और जानें",
+                platformTitle: "हमारे प्लेटफॉर्म की विशेषताएं",
+                platformSubtitle: "किसानों और विक्रेताओं को जोड़ने वाला सरल, सुरक्षित और कुशल प्लेटफॉर्म",
+                feature1Title: "ईमेल सत्यापन",
+                feature1Desc: "प्रामाणिकता और सुरक्षा सुनिश्चित करने के लिए किसानों और विक्रेताओं दोनों के लिए सरल ईमेल सत्यापन प्रक्रिया।",
+                feature2Title: "उत्पाद सूची",
+                feature2Desc: "किसान आसानी से मात्रा, गुणवत्ता और कटाई की तारीख जैसे विवरणों के साथ अपनी उपलब्ध फसलों को सूचीबद्ध कर सकते हैं।",
+                feature3Title: "आवश्यकता पोस्ट करना",
+                feature3Desc: "विक्रेता अपनी आवश्यकताओं को पोस्ट कर सकते हैं जिसमें वे यह निर्दिष्ट कर सकते हैं कि वे किन वस्तुओं को खरीदना चाहते हैं।",
+                feature4Title: "स्मार्ट खोज",
+                feature4Desc: "विक्रेता और किसान वस्तु और स्थान के आधार पर खोज कर सकते हैं।",
+                feature5Title: "केवल आप ही अपने रिकॉर्ड हटा सकते हैं",
+                feature5Desc: "अपनी वस्तु रिकॉर्ड हटाने के लिए ईमेल सत्यापन आवश्यक है।",
+                feature6Title: "बाजार की जानकारी",
+                feature6Desc: "बेहतर निर्णय लेने के लिए रीयल-टाइम बाजार के रुझान और मूल्य निर्धारण डेटा तक पहुंच प्राप्त करें।",
+                pricePredictionTitle: "बाजार मूल्य भविष्यवाणी",
+                pricePredictionSubtitle: "हमारी एमएल-संचालित मूल्य भविष्यवाणियां आपको सूचित निर्णय लेने में मदद करती हैं",
+                howItWorks: "यह कैसे काम करता है",
+                predictionDesc1: "हमारे उन्नत मशीन लर्निंग एल्गोरिदम ऐतिहासिक मूल्य डेटा, मौसम पैटर्न, मांग के रुझान और अन्य बाजार कारकों का विश्लेषण करके वस्तुओं की कीमतों की भविष्यवाणी करते हैं।",
+                predictionDesc2: "ये भविष्यवाणियां किसानों और विक्रेताओं दोनों को अपनी बिक्री और खरीद की अधिक प्रभावी ढंग से योजना बनाने में मदद करती हैं, जिससे लाभ को अधिकतम किया जा सके और जोखिम को कम किया जा सके।",
+                keyFactors: "हम जिन प्रमुख कारकों पर विचार करते हैं:",
+                factor1: "ऐतिहासिक मूल्य रुझान",
+                factor2: "मौसमी मांग पैटर्न",
+                factor3: "मौसम पूर्वानुमान",
+                factor4: "फसल उपज अनुमान",
+                factor5: "बाजार मांग संकेतक",
+                currentPredictions: "वर्तमान भविष्यवाणियां",
+                commodity: "वस्तु",
+                currentPrice: "वर्तमान मूल्य",
+                predictedPrice: "भविष्यवाणी मूल्य (7 दिन)",
+                trend: "रुझान",
+                tomato: "टमाटर",
+                potato: "आलू",
+                onion: "प्याज",
+                wheat: "गेहूं",
+                rice: "चावल",
+                rising: "बढ़ रहा",
+                falling: "गिर रहा",
+                stable: "स्थिर",
+                predictionNote: "नोट: ये भविष्यवाणियां हमारे एमएल मॉडल द्वारा उत्पन्न की जाती हैं और केवल मार्गदर्शन के रूप में उपयोग की जानी चाहिए। वास्तविक बाजार मूल्य भिन्न हो सकते हैं।",
+                howItWorksTitle: "यह कैसे काम करता है",
+                howItWorksSubtitle: "किसानों और विक्रेताओं को आपसी विकास के लिए जोड़ने के सरल चरण",
+                forFarmersProcess: "किसानों के लिए",
+        step1Farmer: "1. ईमेल सत्यापन",
+        step1FarmerDesc: "सुरक्षित प्रमाणीकरण के लिए ईमेल सत्यापन पूरा करें",
+        step2Farmer: "2. वस्तु सूची",
+        step2FarmerDesc: "अपने नाम, स्थान, संपर्क, वस्तु प्रकार, मात्रा और मूल्य जैसे विवरणों के साथ अपनी वस्तुओं को सूचीबद्ध करें",
+        step3Farmer: "3. पूर्ण सूची हटाएं",
+        step3FarmerDesc: "जब आपकी उपज बिक जाए तो आसानी से अपनी वस्तु सूची हटा दें",
+        step4Farmer: "4. विक्रेताओं को खोजें",
+        step4FarmerDesc: "बाजार के नाम और वस्तु प्रकार के अनुसार सही विक्रेताओं की खोज करें",
+        registerFarmer: "किसान के रूप में पंजीकृत करें",
+
+        // Vendor Process
+        forVendorsProcess: "विक्रेताओं के लिए",
+        step1Vendor: "1. ईमेल सत्यापन",
+        step1VendorDesc: "सुरक्षित प्रमाणीकरण के लिए ईमेल सत्यापन पूरा करें",
+        step2Vendor: "2. वस्तु आवश्यकताएँ",
+        step2VendorDesc: "अपने नाम, बाजार का नाम, संपर्क, वस्तु प्रकार, मात्रा और मूल्य जैसे विवरणों के साथ अपनी आवश्यकताओं को सूचीबद्ध करें",
+        step3Vendor: "3. पूर्ण आवश्यकताएँ हटाएं",
+        step3VendorDesc: "जब आपकी आवश्यकता पूरी हो जाए तो आसानी से अपनी वस्तु आवश्यकता हटा दें",
+        step4Vendor: "4. किसानों को खोजें",
+        step4VendorDesc: "बाजार के नाम और वस्तु प्रकार के अनुसार सही किसानों की खोज करें",
+        registerVendor: "विक्रेता के रूप में पंजीकृत करें",
+
+                sectionTitle: "कृषि के भविष्य में शामिल हों",
+                sectionSubtitle: "खेती और व्यापार विकास के लिए सर्वोत्तम संसाधनों से सीधे जुड़ें।",
+                forFarmers: "किसानों के लिए",
+                farmerText: "आत्मविश्वास से उगाएं। आसानी से बेचें। फार्माकनेक्ट के साथ अधिक कमाएं।",
+                registerFarmer: "किसान के रूप में पंजीकृत करें",
+                forVendors: "विक्रेताओं के लिए",
+                vendorText: "ताजा, स्थानीय उत्पाद खोजें। अपने सोर्सिंग को सरल बनाएं और अपने व्यवसाय को बढ़ावा दें।",
+                registerVendor: "विक्रेता के रूप में पंजीकृत करें",
+                footerTagline: "बीज बोएं। मुनाफा काटें। जुड़ें, बढ़ें और फलें-फूलें।",
+                getInTouch: "संपर्क में रहें",
+                address: "123 स्ट्रीट, कोल्हापुर, भारत",
+                quickLinks: "त्वरित लिंक",
+                newsletter: "न्यूज़लेटर",
+                newsletterText: "खेती तकनीकों और बाजार के रुझान के बारे में अपडेट प्राप्त करने के लिए सदस्यता लें।",
+                yourEmail: "आपका ईमेल",
+                subscribe: "सदस्यता लें",
+                marketPrices: "बाजार मूल्य"
+            },
+            mr: {
+                brandName: "फार्माकनेक्ट",
+                home: "होम",
+                farmer: "मी शेतकरी आहे",
+                vender: "मी विक्रेता आहे",
+                marketPrices: "बाज़ार मूल्य",
+                livePrices: "लाइव मूल्य",
+                connectNow: "आता कनेक्ट करा",
+                heroTitle: "शेतकरी <span class='fw-light text-dark'>जोडा</span> विक्रेता एकत्र वाढा",
+                heroSubtitle: "वाढवा. विक्री करा. यशस्वी व्हा. तुमच्या उत्पन्नासाठी थेट विक्रेत्यांशी जोडा.",
+                contactUs: "आमच्याशी संपर्क साधा",
+                farmers: "शेतकरी",
+                connects: "जोडते",
+                venders: "विक्रेते",
+                aboutTitle: "शेतकऱ्यांना सक्षम करणे,",
+                aboutText1: "फार्माकनेक्टमध्ये, आम्ही शेतकऱ्यांना आणि ग्राहकांना जोडतो, ताजे, ऑर्गेनिक आणि उच्च दर्जाचे उत्पादन प्रत्येक घरापर्यंत पोहोचवतो. आमचे ध्येय शाश्वत शेतीला प्रोत्साहन देणे आणि आरोग्यदायी जीवनाला चालना देणे आहे.",
+                aboutText2: "फार्माकनेक्ट निवडून, तुम्ही न्याय्य व्यापार पद्धती, शेतकऱ्यांसाठी चांगले जीवन आणि कीटकनाशक मुक्त, फार्म-फ्रेश उत्पादनांना थेट स्रोताकडून प्रवेश देण्यासाठी योगदान द्या.",
+                exploreMore: "अधिक शोधा",
+                platformTitle: "आमच्या प्लॅटफॉर्मची वैशिष्ट्ये",
+                platformSubtitle: "शेतकऱ्यांना आणि विक्रेत्यांना जोडणारे सोपे, सुरक्षित आणि कार्यक्षम प्लॅटफॉर्म",
+                feature1Title: "ईमेल पडताळणी",
+                feature1Desc: "प्रामाणिकता आणि सुरक्षा सुनिश्चित करण्यासाठी शेतकऱ्यांसाठी आणि विक्रेत्यांसाठी सोपी ईमेल पडताळणी प्रक्रिया.",
+                feature2Title: "माल सूची",
+                feature2Desc: "शेतकरी प्रमाण, गुणवत्ता आणि कापणीच्या तारखेसह त्यांच्या उपलब्ध पिकांची सूची सहजपणे करू शकतात.",
+                feature3Title: "गरजा पोस्ट करणे",
+                feature3Desc: "विक्रेते कोणत्या मालाची खरेदी करू इच्छित आहेत हे निर्दिष्ट करून त्यांच्या गरजा पोस्ट करू शकतात.",
+                feature4Title: "स्मार्ट शोध",
+                feature4Desc: "विक्रेते आणि शेतकरी वस्तू आणि स्थानानुसार शोध घेऊ शकतात.",
+                feature5Title: "फक्त आपणच आपले रेकॉर्ड हटवू शकता",
+                feature5Desc: "आपले वस्तू रेकॉर्ड हटवण्यासाठी ईमेल सत्यापन आवश्यक आहे.",
+                feature6Title: "बाजारातील माहिती",
+                feature6Desc: "चांगले निर्णय घेण्यासाठी रिअल-टाइम बाजारातील ट्रेंड आणि किंमत डेटा मिळवा.",
+                pricePredictionTitle: "बाजारभाव अंदाज",
+                pricePredictionSubtitle: "आमचे एमएल-चालित किंमत अंदाज तुम्हाला माहितीपूर्ण निर्णय घेण्यास मदत करतात",
+                howItWorks: "हे कसे कार्य करते",
+                predictionDesc1: "आमच्या प्रगत मशीन लर्निंग अल्गोरिदम ऐतिहासिक किंमत डेटा, हवामानाचे नमुने, मागणीचे ट्रेंड आणि इतर बाजार घटकांचे विश्लेषण करून मालाच्या किंमतींचा अंदाज घेतात.",
+                predictionDesc2: "हे अंदाज शेतकऱ्यांना आणि विक्रेत्यांना त्यांची विक्री आणि खरेदी अधिक प्रभावीपणे नियोजित करण्यात मदत करतात, नफा वाढवतात आणि धोके कमी करतात.",
+                keyFactors: "आम्ही विचारात घेतलेले प्रमुख घटक:",
+                factor1: "ऐतिहासिक किंमत ट्रेंड",
+                factor2: "हंगामी मागणीचे नमुने",
+                factor3: "हवामान अंदाज",
+                factor4: "पीक उत्पन्न अंदाज",
+                factor5: "बाजारातील मागणी निर्देशक",
+                currentPredictions: "सध्याचे अंदाज",
+                commodity: "माल",
+                currentPrice: "सध्याची किंमत",
+                predictedPrice: "अंदाजित किंमत (7 दिवस)",
+                trend: "ट्रेंड",
+                tomato: "टोमॅटो",
+                potato: "बटाटा",
+                onion: "कांदा",
+                wheat: "गहू",
+                rice: "तांदूळ",
+                rising: "चढत्या",
+                falling: "उतरत्या",
+                stable: "स्थिर",
+                predictionNote: "टीप: हे अंदाज आमच्या एमएल मॉडेलद्वारे व्युत्पन्न केले जातात आणि केवळ मार्गदर्शन म्हणून वापरले पाहिजेत. वास्तविक बाजारभाव बदलू शकतात.",
+                howItWorksTitle: "हे कसे कार्य करते",
+                howItWorksSubtitle: "शेतकरी आणि विक्रेत्यांना परस्पर वाढीसाठी जोडण्याच्या सोप्या पायऱ्या",
+                forFarmersProcess: "शेतकऱ्यांसाठी",
+        step1Farmer: "1. ईमेल पडताळणी",
+        step1FarmerDesc: "सुरक्षित प्रमाणीकरणासाठी ईमेल पडताळणी पूर्ण करा",
+        step2Farmer: "2. माल सूची",
+        step2FarmerDesc: "तुमचे नाव, स्थान, संपर्क, मालाचा प्रकार, प्रमाण आणि किंमत यासारख्या तपशीलांसह तुमच्या मालाची यादी करा",
+        step3Farmer: "3. पूर्ण यादी काढून टाका",
+        step3FarmerDesc: "तुमची उत्पादने विकली गेली असता तुमची माल यादी सहजपणे काढून टाका",
+        step4Farmer: "4. विक्रेत्यांना शोधा",
+        step4FarmerDesc: "बाजाराच्या नावाने आणि मालाच्या प्रकारानुसार योग्य विक्रेत्यांना शोधा",
+        registerFarmer: "शेतकरी म्हणून नोंदणी करा",
+
+        // Vendor Process
+        forVendorsProcess: "विक्रेत्यांसाठी",
+        step1Vendor: "1. ईमेल पडताळणी",
+        step1VendorDesc: "सुरक्षित प्रमाणीकरणासाठी ईमेल पडताळणी पूर्ण करा",
+        step2Vendor: "2. मालाच्या गरजा",
+        step2VendorDesc: "तुमचे नाव, बाजाराचे नाव, संपर्क, मालाचा प्रकार, प्रमाण आणि किंमत यासारख्या तपशीलांसह तुमच्या गरजा नोंदवा",
+        step3Vendor: "3. पूर्ण झालेल्या गरजा काढून टाका",
+        step3VendorDesc: "तुमची गरज भागली की तुमची मालाची गरज सहजपणे काढून टाका",
+        step4Vendor: "4. शेतकऱ्यांना शोधा",
+        step4VendorDesc: "बाजाराच्या नावाने आणि मालाच्या प्रकारानुसार योग्य शेतकऱ्यांना शोधा",
+        registerVendor: "विक्रेता म्हणून नोंदणी करा",
+                sectionTitle: "कृषीच्या भविष्यात सामील व्हा",
+                sectionSubtitle: "शेती आणि व्यवसाय वाढीसाठी सर्वोत्तम संसाधनांशी थेट जोडा.",
+                forFarmers: "शेतकऱ्यांसाठी",
+                farmerText: "आत्मविश्वासाने शेती करा. सहज विक्री करा. फार्माकनेक्टसह अधिक कमवा.",
+                registerFarmer: "शेतकरी म्हणून नोंदणी करा",
+                forVendors: "विक्रेत्यांसाठी",
+                vendorText: "ताजे, स्थानिक उत्पादन शोधा. तुमचे सोर्सिंग सोपे करा आणि तुमच्या व्यवसायाला चालना द्या.",
+                registerVendor: "विक्रेता म्हणून नोंदणी करा",
+                footerTagline: "बिये पेरा. नफा कमवा. कनेक्ट व्हा, वाढा आणि यशस्वी व्हा.",
+                getInTouch: "संपर्कात रहा",
+                address: "१२३ स्ट्रीट, कोल्हापूर, भारत",
+                quickLinks: "द्रुत दुवे",
+                newsletter: "बातमीपत्र",
+                newsletterText: "शेती तंत्रज्ञान आणि बाजारातील ट्रेंडबद्दल अद्यतने मिळवण्यासाठी सदस्यता घ्या.",
+                yourEmail: "तुमचा ईमेल",
+                subscribe: "सदस्यता घ्या",
+                marketPrices: "बाजारभाव"
+            }
+        };
+
+        // Function to change language
+    function changeLanguage(lang) {
+        // Set language in localStorage
+        localStorage.setItem('language', lang);
+        
+        // Update brand name in navbar and hero section
+        document.getElementById('brand-name').textContent = translations[lang].brandName;
+        document.getElementById('hero-brand').textContent = translations[lang].brandName;
+        document.getElementById('footer-brand').textContent = translations[lang].brandName;
+        
+        // Update all elements with data-i18n attribute
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
+                    element.setAttribute('placeholder', translations[lang][key]);
+                } else {
+                    element.innerHTML = translations[lang][key];
+                }
+            }
+        });
+        
+        // Update the language switcher button
+        const langBtn = document.querySelector('.language-btn');
+        if (lang === 'en') {
+            langBtn.innerHTML = '<img src="https://flagcdn.com/w20/gb.png" class="language-flag" alt="English"><span>EN</span>';
+        } else if (lang === 'hi') {
+            langBtn.innerHTML = '<img src="https://flagcdn.com/w20/in.png" class="language-flag" alt="Hindi"><span>HI</span>';
+        } else if (lang === 'mr') {
+            langBtn.innerHTML = '<img src="https://flagcdn.com/w20/in.png" class="language-flag" alt="Marathi"><span>MR</span>';
+        }
+    }
+
+    // Initialize language on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const savedLanguage = localStorage.getItem('language') || 'en';
+        changeLanguage(savedLanguage);
+        
+        // Add click event listeners to language switcher links
+        document.querySelectorAll('.language-dropdown a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const lang = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+                changeLanguage(lang);
+                
+                // Hide dropdown after selection
+                document.querySelector('.language-dropdown').style.display = 'none';
+            });
+        });
+        
+        // Toggle dropdown visibility
+        document.querySelector('.language-btn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const dropdown = document.querySelector('.language-dropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function() {
+            document.querySelector('.language-dropdown').style.display = 'none';
+        });
+    });
+    </script>
+</body>
+</html>
